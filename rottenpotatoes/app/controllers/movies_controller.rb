@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :rating, :director, :description, :release_date)
   end
 
   def show
@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
       ordering,@title_header = {:title => :asc}, 'hilite'
     when 'release_date'
       ordering,@date_header = {:release_date => :asc}, 'hilite'
-    end
+    end 
     @all_ratings = Movie.all_ratings
     @selected_ratings = params[:ratings] || session[:ratings] || {}
     
